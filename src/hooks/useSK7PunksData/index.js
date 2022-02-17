@@ -1,3 +1,4 @@
+import { useWeb3React } from "@web3-react/core";
 import { useCallback, useEffect, useState } from "react";
 import useSK7Punks from "../useSK7Punks";
 
@@ -67,8 +68,9 @@ const getPunkData = async ({ SK7Punks, tokenId }) => {
 };
 
 // Plural
-const useSK7PunksData = () => {
+const useSK7PunksData = ({ owner = null } = {}) => {
   const [punks, setPunks] = useState([]);
+  const { library } = useWeb3React();
   const [loading, setLoading] = useState(true);
   const SK7Punks = useSK7Punks();
 
@@ -78,8 +80,22 @@ const useSK7PunksData = () => {
 
       let tokenIds;
 
-      const totalSupply = await SK7Punks.methods.totalSupply().call();
-      tokenIds = new Array(Number(totalSupply)).fill().map((_, index) => index);
+      if (!library.utils.isAddress(owner)) {
+        const totalSupply = await SK7Punks.methods.totalSupply().call();
+        tokenIds = new Array(Number(totalSupply))
+          .fill()
+          .map((_, index) => index);
+      } else {
+        const balanceOf = await SK7Punks.methods.balanceOf(owner).call();
+
+        const tokenIdsOfOwner = new Array(Number(balanceOf))
+          .fill()
+          .map((_, index) =>
+            SK7Punks.methods.tokenOfOwnerByIndex(owner, index).call()
+          );
+
+        tokenIds = await Promise.all(tokenIdsOfOwner);
+      }
 
       const punksPromise = tokenIds.map((tokenId) =>
         getPunkData({ tokenId, SK7Punks })
@@ -90,7 +106,7 @@ const useSK7PunksData = () => {
       setPunks(punks);
       setLoading(false);
     }
-  }, [SK7Punks]);
+  }, [SK7Punks, owner, library?.utils]);
 
   useEffect(() => {
     update();

@@ -50,7 +50,7 @@ const WalletData = () => {
       {active ? (
         <Tag colorScheme="purple" borderRadius="full">
           <TagLabel>
-            <Link to="/punks">{truncatedAddress}</Link>
+            <Link to={`/punks?address=${account}`}>{truncatedAddress}</Link>
           </TagLabel>
           <Badge
             d={{
@@ -68,7 +68,7 @@ const WalletData = () => {
       ) : (
         <Button
           variant={"solid"}
-          colorScheme={"purple"}
+          colorScheme={"green"}
           size={"sm"}
           leftIcon={<AddIcon />}
           onClick={connect}
