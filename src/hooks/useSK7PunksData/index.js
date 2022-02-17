@@ -104,8 +104,31 @@ const useSK7PunksData = () => {
 };
 
 // Singular
-// const useSK7PunkData = () => {
+const useSK7PunkData = (tokenId = null) => {
+  const [punk, setPunk] = useState({});
+  const [loading, setLoading] = useState(true);
+  const SK7Punks = useSK7Punks();
 
-// }
+  const update = useCallback(async () => {
+    if (SK7Punks && tokenId != null) {
+      setLoading(true);
 
-export { useSK7PunksData };
+      const toSet = await getPunkData({ tokenId, SK7Punks });
+      setPunk(toSet);
+
+      setLoading(false);
+    }
+  }, [SK7Punks, tokenId]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
+
+  return {
+    loading,
+    punk,
+    update,
+  };
+};
+
+export { useSK7PunksData, useSK7PunkData };
