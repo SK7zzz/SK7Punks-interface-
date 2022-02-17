@@ -55,7 +55,12 @@ const Punks = () => {
   return (
     <>
       <form onSubmit={submit}>
-        <FormControl bg={"none"} outline={"none"} border={0}>
+        <FormControl
+          bg={"none"}
+          outline={"none"}
+          border={0}
+          paddingTop={"16px"}
+        >
           <InputGroup mb={3} border={0}>
             <InputLeftElement
               pointerEvents="none"
@@ -94,7 +99,8 @@ const Punks = () => {
               paddingLeft={"24px"}
               marginBottom={"32px"}
             >
-              Dirección inválida. Compruebe si la dirección que ha introducido pertenece a una wallet compatible con la EVM.
+              Dirección inválida. Compruebe si la dirección que ha introducido
+              pertenece a una wallet compatible con la EVM.
             </FormHelperText>
           )}
         </FormControl>
@@ -102,7 +108,11 @@ const Punks = () => {
       {loading ? (
         <Loading />
       ) : (
-        <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={6}>
+        <Grid
+          templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+          gap={6}
+          marginTop={"80px"}
+        >
           {punks.map(({ name, image, tokenId }) => (
             <Link key={tokenId} to={`/punks/${tokenId}`}>
               <PunkCard image={image} name={name} />
