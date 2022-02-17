@@ -8,13 +8,11 @@ import {
   const Footer = () => {
     return (
       <Box
-        bg={"gray.900"}
+        bg={"gray.800"}
         color={useColorModeValue("gray.700", "gray.200")}
       >
         <Box
-          borderTopWidth={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
+          
         >
           <Container
             as={Stack}

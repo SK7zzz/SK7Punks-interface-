@@ -89,12 +89,17 @@ const Punk = () => {
           }}
           name={punk.name}
           image={punk.image}
+          color={"white"}
         />
         <Button
           onClick={transfer}
           disabled={account !== punk.owner}
-          colorScheme="green"
+          colorScheme="purple"
           isLoading={transfering}
+          _focus={{
+                border: "0",
+                outline: "0",
+              }}
         >
           {account !== punk.owner ? "No eres el dueño" : "Transferir"}
         </Button>
@@ -102,23 +107,23 @@ const Punk = () => {
       <Stack width="100%" spacing={5}>
         <Heading>{punk.name}</Heading>
         <Text fontSize="xl">{punk.description}</Text>
-        <Text fontWeight={600}>
+        <Text fontWeight={600} color={"white"}>
           DNA:
-          <Tag ml={2} colorScheme="green">
+          <Tag ml={2} colorScheme="purple" marginLeft={"28px"}>
             {punk.dna}
           </Tag>
         </Text>
-        <Text fontWeight={600}>
+        <Text fontWeight={600} color={"white"}>
           Owner:
-          <Tag ml={2} colorScheme="green">
+          <Tag ml={2} colorScheme="purple">
             {punk.owner}
           </Tag>
         </Text>
-        <Table size="sm" variant="simple">
+        <Table size="sm" variant="simple" color={"white"}>
           <Thead>
             <Tr>
-              <Th>Atributo</Th>
-              <Th>Valor</Th>
+              <Th color={"white"}>Atributo</Th>
+              <Th color={"white"}>Valor</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -126,7 +131,7 @@ const Punk = () => {
               <Tr key={key}>
                 <Td>{key}</Td>
                 <Td>
-                  <Tag>{value}</Tag>
+                  <Tag bg={"purple.500"} color={"white"}>{value}</Tag>
                 </Td>
               </Tr>
             ))}

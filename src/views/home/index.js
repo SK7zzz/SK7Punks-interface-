@@ -127,11 +127,24 @@ const Home = () => {
             disabled={!SK7Punks}
             onClick={mint}
             isLoading={isMinting}
+            _focus={{
+              border: "0",
+              outline: "0",
+            }}
           >
             Obtén tu punk
           </Button>
           <Link to="/punks">
-            <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
+            <Button
+              rounded={"full"}
+              size={"lg"}
+              fontWeight={"normal"}
+              px={6}
+              _focus={{
+                border: "0",
+                outline: "0",
+              }}
+            >
               Galería
             </Button>
           </Link>
@@ -167,6 +180,10 @@ const Home = () => {
               mt={4}
               size="xs"
               colorScheme="purple"
+              _focus={{
+                border: "0",
+                outline: "0",
+              }}
             >
               Actualizar
             </Button>

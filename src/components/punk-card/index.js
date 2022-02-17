@@ -13,8 +13,7 @@ import {
         p={6}
         maxW={"330px"}
         w={"full"}
-        bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"2xl"}
+        bg={"none"}
         rounded={"lg"}
         pos={"relative"}
         zIndex={1}
@@ -33,8 +32,8 @@ import {
             top: 0,
             left: 0,
             backgroundImage: `url(${image})`,
-            filter: "blur(15px)",
-            zIndex: -1,
+            filter: "blur(80px)",
+            zIndex: -2,
           }}
           _groupHover={{
             _after: {
@@ -51,7 +50,7 @@ import {
           />
         </Box>
         <Stack pt={10} align={"center"}>
-          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={500}>
+          <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={500} color={"white"}>
             {name}
           </Heading>
         </Stack>

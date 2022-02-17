@@ -55,26 +55,47 @@ const Punks = () => {
   return (
     <>
       <form onSubmit={submit}>
-        <FormControl>
-          <InputGroup mb={3}>
+        <FormControl bg={"none"} outline={"none"} border={0}>
+          <InputGroup mb={3} border={0}>
             <InputLeftElement
               pointerEvents="none"
-              children={<SearchIcon color="gray.300" />}
+              children={<SearchIcon color="white" />}
             />
             <Input
               isInvalid={false}
               value={address ?? ""}
               onChange={handleAddressChange}
               placeholder="Buscar por dirección"
+              color={"white"}
+              border={0}
+              _focus={{
+                border: "0",
+                outline: "0",
+              }}
             />
             <InputRightElement width="5.5rem">
-              <Button type="submit" h="1.75rem" size="sm">
+              <Button
+                type="submit"
+                h="1.75rem"
+                size="sm"
+                borderRadius={"0px"}
+                _focus={{
+                  border: "0",
+                  outline: "0",
+                }}
+              >
                 Buscar
               </Button>
             </InputRightElement>
           </InputGroup>
           {submitted && !validAddress && (
-            <FormHelperText>Dirección inválida</FormHelperText>
+            <FormHelperText
+              color={"white"}
+              paddingLeft={"24px"}
+              marginBottom={"32px"}
+            >
+              Dirección inválida. Compruebe si la dirección que ha introducido pertenece a una wallet compatible con la EVM.
+            </FormHelperText>
           )}
         </FormControl>
       </form>

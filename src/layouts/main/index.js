@@ -28,21 +28,17 @@ const MainLayout = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex minH="100vh" direction="column" bg={"gray.900"}>
+    <Flex minH="100vh" direction="column" bg={"gray.800"}>
       <Box
-        mx="auto"
-        maxW={"7xl"}
-        width="100%"
-        bg={useColorModeValue("white", "gray.800")}
-        px={4}
+        bg={"white"}
+        px={16}
       >
         <Flex
-          bg={useColorModeValue("white", "gray.800")}
+          bg={"white"}
           color={useColorModeValue("gray.600", "white")}
           minH={"60px"}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderBottom={1}
           borderStyle={"solid"}
           borderColor={useColorModeValue("gray.200", "gray.900")}
           alignItems={"center"}
@@ -57,10 +53,10 @@ const MainLayout = ({ children }) => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Flex alignItems="center">
-            <Heading size="lg" color="purple.800" mt={0.2} ml={1}>
+            <Heading size="lg" color="purple.600" mt={0.2} ml={1}>
                 SK7
               </Heading>
-              <Heading size="md" color="purple.800" mt={0.2} ml={1}>
+              <Heading size="md" color="purple.600" mt={0.2} ml={1}>
                 Punks
               </Heading>
             </Flex>
